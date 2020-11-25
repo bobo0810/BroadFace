@@ -2,8 +2,8 @@
 #### 收录到[PytorchNetHub](https://github.com/bobo0810/PytorchNetHub)
 
 # 说明
-- ECCV2020收录
-- 非官方，准备开源
+- ECCV2020
+- 2020.11.25 第三方实现
 
 ## 环境
 
@@ -13,4 +13,7 @@
 
 
 ## 算法框架
+实现原理
+> 1. 通过 当前类中心与过去类中心的差值，将 队列内过去特征 补偿近似为 当前特征, 实现 大Batch更新分类器。
+> 2. 更好的分类器训练出更好的Backbone
 ![](https://github.com/bobo0810/BroadFace/blob/main/imgs/broadface.png)
