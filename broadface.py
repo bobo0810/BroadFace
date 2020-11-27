@@ -28,15 +28,21 @@ def start_train():
     BroadFace
     '''
     ######################
+    lr=0.1
     batch_size=120
     queue_nums=9 # 队列大小
     ######################
     init_param=None
-    optimizer = init_param['optimizer'] # 优化器
     lr_scheduler = init_param['lr_scheduler'] # 学习率调度器
     face_model = init_param['face_model'] # Backbone
     classifier = init_param['classifier'] # 分类器
     face_data = init_param['face_data'] # 数据加载器
+
+    # 优化器
+    optimizer = torch.optim.SGD(
+        [{'params': face_model.parameters(), 'lr': lr*(queue_nums+1)}, # 由于梯度传到Backbone已缩减为1/(queue_nums+1)倍，故学习率增大相应倍数
+            {'params': classifier.parameters(), 'lr': lr}],
+        lr=lr, momentum=0.9,weight_decay=0.0005)
 
 
     # 队列存储 特征\对应类中心\对应标签
