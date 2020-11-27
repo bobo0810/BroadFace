@@ -29,7 +29,7 @@ def start_train():
     '''
     ######################
     batch_size=120
-    queue_nums=8 # 队列大小
+    queue_nums=9 # 队列大小
     ######################
     init_param=None
     optimizer = init_param['optimizer'] # 优化器
