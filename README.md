@@ -12,9 +12,10 @@
 > 微调：加载预训练权重。否则队列内特征误差过大，导致震荡
 
 实现原理
-> 1. 通过 当前类中心与过去类中心的差值，将 队列内过去特征 补偿近似为 当前特征, 实现 大Batch更新分类器。
-> 2. 更好的分类器训练更好的卷积层
-![](https://github.com/bobo0810/BroadFace/blob/main/imgs/broadface.png)
+> 1. 通过 当前类中心与过去类中心的差值，将 队列内过去特征 补偿近似为 当前特征。
+> 2. mini-batch的梯度更新卷积层，mini-batch和队列concat的梯度更新分类器。
+> 3. 更好的分类器训练更好的卷积层
+>   ![](https://github.com/bobo0810/BroadFace/blob/main/imgs/broadface.png)
 
 
 ## 环境
